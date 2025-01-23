@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
-// mongoose.set("strictQuery", true);
-async function connectToMongoDB(url) {
-    return mongoose.connect(url);
-}
+const dotenv = require('dotenv');
+dotenv.config();
+const uri = process.env.MONGO_URL;
 
-module.exports = { connectToMongoDB };
+// mongoose.set("strictQuery", true);
+mongoose.connect(uri)
+    .then(() => {
+        console.log("MongoDB connected successfully...");
+    }).catch((err) => {
+        console.log("MongoDB connection error : ", err);
+    })
