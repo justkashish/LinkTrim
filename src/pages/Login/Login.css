@@ -1,13 +1,8 @@
-.signup-container {
+.login-container {
     display: flex;
     height: 100vh;
+    position: relative;
     width: 100vw;
-}
-
-.cuvette-image {
-    position: absolute;
-    top: 30px;
-    left: 30px;
 }
 
 .top-right-buttons {
@@ -16,21 +11,15 @@
     right: 20px;
 }
 
-.top-right-buttons .login-button,
-.top-right-buttons .signup-button {
+.top-right-buttons .signup-button,
+.top-right-buttons .login-button {
     margin-left: 10px;
     padding: 10px 20px;
     font-size: 16px;
     color: white;
-    background-color: #007bff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.top-right-buttons .signup-button {
-    background-color: #fff;
-    color: black;
 }
 
 .top-right-buttons .login-button:hover {
@@ -65,6 +54,7 @@ h2 {
 form {
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
 input {
@@ -73,14 +63,9 @@ input {
     font-size: 16px;
     border: 1px solid #3B3C51;
     border-radius: 5px;
-    width: 100%;
 }
 
-input::placeholder {
-    color: #B3B3B3;
-}
-
-.register-button {
+.login-button {
     padding: 10px;
     font-size: 16px;
     color: white;
@@ -90,7 +75,7 @@ input::placeholder {
     cursor: pointer;
 }
 
-.register-button:hover {
+.login-button:hover {
     background-color: #0056b3;
 }
 
@@ -105,4 +90,9 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
 }

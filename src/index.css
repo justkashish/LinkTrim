@@ -6,10 +6,6 @@
     margin: 0;
 }
 
-label {
-    font-size: 20px;
-}
-
 html,
 body {
     height: 100%;
@@ -22,7 +18,8 @@ body {
     align-items: center;
 }
 
-.container {
+
+/* .container {
     background-color: #fff;
     padding: 32px;
     border-radius: 10px;
@@ -69,4 +66,4 @@ button {
     padding: 10px;
     margin: 10px 0;
     cursor: pointer;
-}
+} */

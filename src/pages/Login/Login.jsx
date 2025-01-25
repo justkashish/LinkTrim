@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {ToastContainer} from 'react-toastify'
 import { handleError, handleSuccess } from '../../utils';
+import cuvette from '../../assets/cuvette.png';
+import './Login.css';
+
 
 function Login() {
     const[loginInfo , setLoginInfo] = useState({
@@ -55,11 +58,23 @@ function Login() {
          
     }
   return (
-    <div className='container'>
-      <h1>Login</h1>
+    <div className='login-container'>
+        <div className='top-right-buttons'>
+        
+        <button className='signup-button' onClick={()=>{
+            navigate('/signup')
+        }}>SignUp</button>
+        <button className='login-button'>Login</button>
+      </div>
+      <div className='left-section'>
+        <img src={cuvette} alt='Scenic background' className='cuvette-image' />
+      </div>
+      <div className='right-section'>
+      <div className='form-container'>
+        <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div>
-            <label htmlFor='email'>Email</label>
+            
             <input 
             onChange={handleChange}
             type='email' 
@@ -69,7 +84,7 @@ function Login() {
             />
         </div>
         <div>
-            <label htmlFor='password'>Password</label>
+            
             <input 
             onChange={handleChange}
             type='password' 
@@ -78,11 +93,15 @@ function Login() {
             value={loginInfo.password}
             />
         </div>
-        <button type='submit'>Login</button>
+        <button className='login-button' type='submit'>Login</button>
         <span>Don't have an account ? 
             <Link to='/signup'>Signup</Link>
         </span>
       </form>
+        </div>
+      
+      </div>
+       
       <ToastContainer />
     </div>
   )

@@ -2,14 +2,18 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {ToastContainer} from 'react-toastify'
 import { handleError, handleSuccess } from '../../utils';
-
-function Signup() {
+import './Signup.css';
+import cuvette from '../../assets/cuvette.png';
+ function Signup() {
 
     const[signupInfo , setSignupInfo] = useState({
         name : '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: '',
+        mobile: '',
     });
+
     const navigate = useNavigate();
     const handleChange = (e) =>{
          const {name ,value} = e.target;
@@ -22,10 +26,17 @@ function Signup() {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        const {name , email , password} = signupInfo;
+        const {name , email , password , mobile , confirmPassword}  = signupInfo;
+
+        if(password !== confirmPassword){
+          return handleError('Passwords do not match.')
+        }
         if(!name || !email || !password){
             return handleError('All fields are required.')
         }
+
+        const payload = { name, email, password, mobile };
+
         try {
            const url = "http://localhost:8080/auth/signup" ;
            const response = await fetch(url,{
@@ -33,7 +44,7 @@ function Signup() {
             headers: {
                 'Content-Type' : 'application/json'
             },
-            body: JSON.stringify(signupInfo)
+            body: JSON.stringify(payload),
            });
            const result = await response.json();
            const {success , message , error } = result;
@@ -55,46 +66,77 @@ function Signup() {
          
     }
   return (
-    <div className='container'>
-      <h1>Signup</h1>
+    <div className='signup-container'>
+      <div className="top-right-buttons">
+        <button className="signup-button">SignUp</button>
+        <button className="login-button" onClick={()=>{
+          navigate('/login')
+        }}>Login</button>
+      </div>
+        <div className="left-section">
+        <img src={cuvette} alt="Scenic background" className="cuvette-image" />
+      </div>
+      <div className='right-section'>
+        <div className='form-container'>
+        <h2>Join us Today!</h2>
       <form onSubmit={handleSignup}>
         <div>
-            <label htmlFor='name'>Name</label>
             <input 
             onChange={handleChange}
             type='text' 
             name='name'
             autoFocus
-            placeholder='Enter your name...'
+            placeholder='Name'
             value={signupInfo.name}
             />
         </div>
-        <div>
-            <label htmlFor='email'>Email</label>
+        <div>  
             <input 
             onChange={handleChange}
             type='email' 
             name='email'
-            placeholder='Enter your Email...'
+            placeholder='Email id'
             value={signupInfo.email}
             />
         </div>
         <div>
-            <label htmlFor='password'>Password</label>
+            <input 
+            onChange={handleChange}
+            type='tel' 
+            name='mobile'
+            placeholder='Mobile no.'
+            value={signupInfo.mobile}
+            />
+        </div>
+        <div>
+           
             <input 
             onChange={handleChange}
             type='password' 
             name='password'
-            placeholder='Enter your Password...'
+            placeholder='Password'
             value={signupInfo.password}
             />
         </div>
-        <button type='submit'>Signup</button>
-        <span>Already have an account ? 
+        <div>
+           
+            <input 
+            onChange={handleChange}
+            type='password' 
+            name='confirmPassword'
+            placeholder='Confirm Password'
+            value={signupInfo.confirmPassword}
+            />
+        </div>
+        <button className='register-button' type='submit'>Register</button>
+        <p>Already have an account ? 
             <Link to='/login'>Login</Link>
-        </span>
+        </p>
       </form>
       <ToastContainer />
+        </div>
+      </div>
+      
     </div>
   )
 }
