@@ -6,7 +6,7 @@ const urlRoute = require("./routes/urlRouter");
 const authRouter = require("./routes/authRouter");
 const URL = require("./models/url");
 const app = express();
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 8080;
 require('./connect');
 
 dotenv.config();
