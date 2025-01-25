@@ -1,0 +1,77 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar-left h2 {
+    margin: 0;
+    color: #181820;
+}
+
+.navbar-left p {
+    margin: 0;
+    color: #878BA9;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    box-shadow: 0px 1px 2px 0px #1018280D;
+    border: 1px solid #ECECF2;
+    border-radius: 6px;
+    padding: 5px;
+    margin-right: 20px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 2px;
+    color: #878BA9;
+}
+
+.search-bar svg {
+    color: #878BA9;
+}
+
+.create-button {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: white;
+    background-color: #1B48DA;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 20px;
+    border: 1px solid #1B48DA
+}
+
+.create-button:hover {
+    background-color: #0056b3;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FDE48A;
+    color: #923E0E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
